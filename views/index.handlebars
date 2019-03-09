@@ -1,33 +1,39 @@
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12 text-center" id="top-bar">
-            <h1>EAT DA BURGER!</h1>
-        </div>
-        <div class="col-xs-6 text-center" class="task">
-            <div class="row">
-                {{#each burger_data}}
-                {{#unless this.devoured}}
-                <div class="col-xs-9 text-center">
-                    <pre>{{this.id}}. {{this.burger_name}}</pre>
-                </div>
-                <div class="col-xs-3 text-center">
-                    <form method="POST" action="/burgers/update?_method=PUT" class="button-size">
-                        <input type="hidden" name="buger_id" type="text" value={{this.id}}>
-                        <br>
-                        <button type="submit" class="btn btn-default">
-                            DEVOUR IT!</button>
-                    </form>
-                </div>
-                {{/unless}}
-                {{/each}}
+<div class="row">
+    <section class="col-xs-4">
+        <ul class="list-group">
+            {{!-- Goes through each burger --}}
+            {{#each burgers}}
+            {{!-- unless it has been devoured  --}}
+            {{#unless this.devoured}}
+            <li class="list-group-item">
+                {{!-- Show burger name --}}
+                {{this.burger_name}}
+                <button type="submit" form="{{this.id}}" class="btn btn-danger btn-block">Devour</button>
+            </li>
+            <form action="/{{this.id}}?_method=PUT" method="POST" id="{{this.id}}" class="hidden-xs-up"></form>
+            {{/unless}}
+            {{/each}}
+        </ul>
+    </section>
+    <section class="col-xs-4">
+        <h2>Add New Burger</h2>
+        <form method="POST" action="/" class="form">
+            <div class="form-group">
+                <input type="text" name="burger" class="form-control"></input>
             </div>
-        </div>
-        <div class="col-xs-6 text-center" class="task">
-            {{#each burger_data}}
+            <button type="submit" class="btn btn-success btn-block">Submit Burger</button>
+        </form>
+    </section>
+    <section class="col-xs-4">
+        <ul class="list-group">
+            {{!-- goes through each burger --}}
+            {{#each burgers}}
+            {{!-- lists out all burgers that have been devoured --}}
             {{#if this.devoured}}
-            <input class="form-control" type="text" placeholder="{{this.id}}. {{this.burger_name}}" readonly>
+            {{!-- Display burger name --}}
+            <li class="list-group-item">{{this.burger_name}}</li>
             {{/if}}
-            {{each}}
-        </div>
-    </div>
+            {{/each}}
+        </ul>
+    </section>
 </div>

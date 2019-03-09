@@ -1,16 +1,26 @@
-var orm = require('../config/orm.js');
+var orm = require("../config/orm.js");
 
+// Burger object to be exported with data update functions
 var burger = {
-    all: function (cb) {
-        orm.all('burgers', function (res) {
-            cb(res);
-        })
+    // Gets data from burger table
+    selectAll: function(cb) {
+        orm.selectAll('burgers', function(result) {
+            cb(result);
+        });
     },
-    update: function (id, cb) {
-        orm.update('burgers', id, cb);
+    // Inserts new burger into table
+    insertOne: function(newBurgerName, cb) {
+        orm.insertOne('burgers', 'burger_name', newBurgerName, function(result) {
+            cb(result);
+        });
     },
-    create: function (name, cb) {
-        orm.create('burgers', name, cb);
+    // Updates a previously existing burger
+    updateOne: function(devouredBurgerID, cb) {
+        orm.updateOne('burgers', 'devoured = true', devouredBurgerID, function(result) {
+            cb(result);
+        });
     }
-}
+};
+
+
 module.exports = burger;
