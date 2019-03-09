@@ -1,6 +1,5 @@
 # BURGER
 
-
 This application allows you to add and then devour burgers, this app demonstrates my ability to use MySQL, ORMs, and the MVC model.
 
 Click here to see the app in production on Heroku:
@@ -13,7 +12,7 @@ Click here to see the app in production on Heroku:
 * This will ensure you have all the necessary NPM packages installed to run this generator.
 
 
-* You will likely be prompted for your credentials. Assuming you know your password for the connection, enter them now with host set to localhost or 127.0.0.1, password set to your password, and port set to 3306 or 3307.
+* You will likely be prompted for your credentials. If you know your password for the connection, enter them now with host set to localhost or 127.0.0.1, password set to your password, and port set to 3000.
 
 * Next, navigate to the connection.js file, and in the connection variable (defined at the top of these files), enter in your password in the password property of the object in the ''.
 
